@@ -21,8 +21,8 @@ rand
 ;1st- define a function
 ;2nd- use cons to add onto list
 ;(define gameNums(n))
-;list-ref gets random value from a list 
-
+;list-ref gets random position value from a list 
+;set! saves number
 ;https://www.rosettacode.org/wiki/Pick_random_element
 (define (pick-item l)
   (define r(list-ref l (random (length l))))
@@ -35,9 +35,3 @@ rand
 (pick-item listNums)
 
 
-
-
-
-;Code to generate random numbers between 2 numbers - Ex - (random-number-list 10 20) - use this as a reference
-;(define (random-number-list n listNums)
- ; (build-list n (lambda (listNums) (random listNums))))
