@@ -6,7 +6,7 @@
 
 ;list of available numbers for the game, can only get 6 of these 
 (define listNums (list 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 25 50 75 100))
-listNums
+;listNums
 
 ;generator
 (define rand (random 101 1000))
@@ -14,17 +14,29 @@ rand
 
 ;define a list for the 6 random numbers to go in (an empty list)
 (define nums(list))
-nums
+;nums
+
 
 ;Now we have an empty list we have to fill it with 6 random numbers
 ;1st- define a function
 ;2nd- use cons to add onto list
 ;(define gameNums(n))
+;list-ref gets random value from a list 
+
+;https://www.rosettacode.org/wiki/Pick_random_element
+(define (pick-item l)
+  (define r(list-ref l (random (length l))))
+(set! nums(cons r nums));adds to empty list
+  (set! l (remove r l))
+  (if (= (length nums)6)
+      nums
+      (pick-item l))
+  )
+(pick-item listNums)
 
 
-;Found online might help later
-;(define (pick-item l)
- ; (list-ref l (random (length l))))
+
+
 
 ;Code to generate random numbers between 2 numbers - Ex - (random-number-list 10 20) - use this as a reference
 ;(define (random-number-list n listNums)
