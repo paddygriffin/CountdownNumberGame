@@ -1,5 +1,6 @@
 #lang racket
-
+#|
+Practice code
 ;Patrick Griffin G00314635
 ;Theory of Algorithms Project
 ;Countdown Number Game
@@ -33,5 +34,5 @@ rand
       (pick-item l))
   )
 (pick-item listNums)
-
+|#
 
