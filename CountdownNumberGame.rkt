@@ -61,3 +61,8 @@ rand
           #f
           (#t))))) ;true ot false
 
+;
+;(define nos (list 100 50 10 6 5 1))
+;(permutations nos)
+(define ops (list '+ '- '/ '*))
+(cartesian-product ops ops ops ops ops)
