@@ -2,6 +2,7 @@
 A countdown number game for theory of algorithmns project using functional programming
 
 ### Research
+--------------------
 Firstly, I set up issues on github. It was nothing pacific but my personal sort of
 to do list of what i think the way of approaching it could be.
 I practiced racket by attempting the problem sheets that I received in college.
@@ -10,6 +11,7 @@ Next, I watched countdown to clarify rules as I was not familiar to the process 
 I then googled countdown numbers game http://happysoft.org.uk/countdown/numgame.php
 
 ### Programming Practice
+------------------------
 Firstly, when beginning this project I generated a list of the numbers to get started 
 and get used to racket and using the racket documentation. So as I was practicing racket it has 
 reference to the actual countdown game itself.
@@ -47,6 +49,9 @@ This is where **reverse polish notation** comes in.RPN is a mathematical notatio
 doesnt matter which order. However to be a valid RPN equation you must for example have at least 2 numbers on the stack than the operator
 and the end of the stack has one number  
 
+### Issues
+Crashed when too many numbers due to memeory.
+
 ### Algorithm 
 I used remove-duplicates built in function to remove repeated statements in order
 to make the problem smaller. And then working on making it a valid RPN.
@@ -65,3 +70,10 @@ Example:
 > (cartesian-product '(1 2 3) '(a b c))
 '((1 a) (1 b) (1 c) (2 a) (2 b) (2 c) (3 a) (3 b) (3 c))
 ```
+
+
+
+### References
+http://stackoverflow.com/questions/14674165/scheme-generate-random   -  Generate random num
+http://www.cplusplus.com/forum/general/135491/ - permutations reverse polish notation
+http://www-stone.ch.cam.ac.uk/documentation/rrf/rpn.html - Reverse Polis Notation

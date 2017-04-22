@@ -38,16 +38,16 @@ rand
 
 ; -1 will represent operators
 ; 1 will represent numbers. 
-(define start(list -1 -1 -1 -1 1 1 1 1))
+(define start(list -1 -1 -1 -1 1 1 1 1 1))
 
 ;This line creates all permutations and it removes the duplicates 
 (define perms (remove-duplicates (permutations start)))
 
 ;This function adds the two 1s to the front of the list and the -1 to the end of the list 
-(define (to-rpn l)
- (append (list 1 1) l (list -1)))
-
-(map to-rpn perms)
+;(define (to-rpn l)
+; (append (list 1 1) l (list -1)))
+;(to-rpn (car  perms))
+;(map to-rpn perms)
 
 ;Apply function to every element of the list to get valid RPN
 ;s= stack to see how many on it
@@ -57,12 +57,39 @@ rand
       (if (= s 1) #t #f)
       (if (= (car e) 1)
           (valid-rpn? (cdr e) (+ s 1))
-      (if (< s 2)
-          #f
-          (#t))))) ;true ot false
+      (if (> s 1)
+          (valid-rpn? (cdr e) (- s 1))
+          (#f))))) ;true ot false
 
-;
-;(define nos (list 100 50 10 6 5 1))
-;(permutations nos)
+;Calculate RPN adapted from https://rosettacode.org/wiki/Parsing/RPN_calculator_algorithm#Racket
+(define (calculate-rpn expr)
+  (for/fold ([stack '()]) ([token expr])
+    (printf "~a\t -> ~a~N" token stack)
+    (match* (token stack)
+     [((? number? n) s) (cons n s)]
+     [('+ (list x y s ___)) (cons (+ x y) s)]
+     [('- (list x y s ___)) (cons (- y x) s)]
+     [('* (list x y s ___)) (cons (* x y) s)]
+     [('/ (list x y s ___)) (cons (/ y x) s)]
+     [(x s) (error "calculate-RPN: Cannot calculate the expression:" 
+                   (reverse (cons x s)))])))
+
+
+
+(define nos (list 100 50 10 6 5 1))
+(permutations nos)
 (define ops (list '+ '- '/ '*))
-(cartesian-product ops ops ops ops ops)
+(cartesian-product ops ops ops ops ops);groups operators
+#|
+
+;Function to make a perm into a rpn expression and calculates the expression if valid rpn
+(define (to-rpn l)
+  (if(valid-rpn? (append nos l ops))
+     (calculate-rpn(nos l ops))
+    #f)
+  )
+  
+|#
+
+
+
