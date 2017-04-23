@@ -71,9 +71,18 @@ Example:
 '((1 a) (1 b) (1 c) (2 a) (2 b) (2 c) (3 a) (3 b) (3 c))
 ```
 
+I dont need the cartesian-product at the moment so I found a calculate-rpn function online and tried
+to incorporate that into my program.(Link in code)
+
+So, I check if its a valid RPN and append the list and if it is I calculate-rpn however this is 
+still not working.
+
+
+
 
 
 ### References
 http://stackoverflow.com/questions/14674165/scheme-generate-random   -  Generate random num
 http://www.cplusplus.com/forum/general/135491/ - permutations reverse polish notation
-http://www-stone.ch.cam.ac.uk/documentation/rrf/rpn.html - Reverse Polis Notation
+http://www-stone.ch.cam.ac.uk/documentation/rrf/rpn.html - Reverse Polish Notation
+http://www.alcula.com/calculators/rpn/ - Reverse Polish Notation Calculator
