@@ -6,9 +6,9 @@ Theory of Algorithms Project
 Countdown Number Game
 |#
 
-; -1 will represent operators
-; 1 will represent numbers. 
+;List of Nums 
 (define start(list 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 25 50 75 100))
+;Generate all permutaions off all operators as 6 numbers so 5 operators
 (define op (list '+ '+ '+ '+ '+ '- '- '- '- '- '- '* '* '* '* '*  '/ '/ '/ '/ '/))
 ;Give the outline of numbers
 start
@@ -21,7 +21,7 @@ rand
 ;nums
 
 
-;Now we have an empty list we have to fill it with 6 random numbers
+;Now we have an empty list we have to fill it with 4 random numbers then 2 random numbers
 ;1st- define a function
 ;2nd- use cons to add onto list
 ;(define gameNums(n))
@@ -40,7 +40,7 @@ rand
 )
 (randomListNumbers start);Outputs random list
 
-(define numbers2 (list));Creates list for selecting 4 numbers
+(define numbers2 (list));Creates list for selecting 2 numbers
 (define (listNumbers2 r);Creates list for random numbers  
   (define randomNumber(list-ref r(random (length r))))  
   (set! r(remove randomNumber r)) 
@@ -51,19 +51,20 @@ rand
 )
 (listNumbers2 start);Outputs second random list
 
-(define selectOp (list));Creates list for selecting 4 numbers
-(define (randomListOp r);Creates list for random numbers  
+;Need a function for random operators same as above code except calling operators
+(define selectOp (list));Creates list for selecting 1 operator for the end of the stack
+(define (randomListOp r);Creates list  
   (define randomOp(list-ref r(random (length r))))  
   (set! r(remove randomOp r)) 
   (set! selectOp (cons randomOp selectOp))  
   (if (= (length selectOp) 1)
-     selectOp ;Prints 2 random numbers
+     selectOp ;Prints op
       (randomListOp r))
 )
-(randomListOp op);Outputs second random list
+(randomListOp op);Outputs the op
 
-;Need a function for random operators same as above code except calling operators
-(define select4Ops (list));Creates list for selecting 4 operands
+
+(define select4Ops (list));Creates list for selecting 4 operators
 (define (randomList r);Creates list  
   (define randomOp(list-ref r(random (length r))))  
   (set! r(remove randomOp r)) 
@@ -87,7 +88,7 @@ rand
           (valid-rpn? (cdr e) (+ s 1))
       (if (> s 1)
           (valid-rpn? (cdr e) (- s 1))
-          #f)))) ;true ot false
+          #f)))) ;true or false
 
 (define resultsList null)
 
@@ -111,29 +112,12 @@ rand
      [(x s) (error "calculate-RPN: Cannot calculate the expression:" 
                    (reverse (cons x s)))])))
 
-;Function to append the numbers with operations
+;Function to append the numbers with operations as 2 nums need to be at start and operator at the end
 (define (to-rpn l)
   (cond [(valid-rpn? (append numbers2 l selectOp))
    (calculate-RPN (append numbers2 l selectOp))]))
 
-
+;map passes a list into a function
 (map to-rpn allPerms)
-#|
-;This line creates all permutations and it removes the duplicates 
-(define perms (remove-duplicates (permutations start)))
-;This function adds the two 1s to the front of the list and the -1 to the end of the list 
-(define (to-rpn l)
- (append (list 1 1) l (list -1)))
-(map to-rpn perms)
-;Apply function to every element of the list to get valid RPN
-;s= stack to see how many on it
-;e= list
-(define (valid-rpn? e (s 0)) ;default value is 0
-  (if (null? e)
-      (if (= s 1) #t #f)
-      (if (= (car e) 1)
-          (valid-rpn? (cdr e) (+ s 1))
-      (if (< s 2)
-          #f
-          (#t))))) ;true ot false
-|#
+
+; Void output is invalid RPN
