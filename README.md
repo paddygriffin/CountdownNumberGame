@@ -3,6 +3,7 @@ A countdown number game for theory of algorithmns project using functional progr
 #### Patrick Griffin
 #### G00314635
 #### Theory Of Algorithms
+#### Ian McLoughlin
 
 ### Introduction
 --------------------
@@ -22,7 +23,7 @@ To run this project firstly you will need racket downloaded and installed found 
 ```
  git clone https://github.com/paddygriffin/CountdownNumberGame.git
  ```
-- File -> Open -> .../countdown/countdown.rkt
+- File -> Open -> .../countdown/CountdownNumberGame.rkt
 - You can also download the project and open it from there.
 
 ### Research
@@ -75,6 +76,7 @@ doesnt matter which order. However to be a valid RPN equation you must for examp
 ### Issues
 Crashed when too many numbers due to memeory.
 difficult to get my head around.
+Not fully working
 
 ### Algorithm 
 I used remove-duplicates built in function to remove repeated statements in order
