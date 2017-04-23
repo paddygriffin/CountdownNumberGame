@@ -1,5 +1,8 @@
 # CountdownNumberGame
 A countdown number game for theory of algorithmns project using functional programming
+#### Patrick Griffin
+#### G00314635
+#### Theory Of Algorithms
 
 ### Introduction
 --------------------
@@ -12,9 +15,19 @@ from the following list of numbers:
 In this application I tried to generate the random number between the random and generate a
 list of random numbers and try and calculate it.
 
+### How to Run:
+----------------------
+To run this project firstly you will need racket downloaded and installed found [here](http://racket-lang.org/download/).
+- Clone this repository https://github.com/paddygriffin/CountdownNumberGame.git
+```
+ git clone https://github.com/paddygriffin/CountdownNumberGame.git
+ ```
+- File -> Open -> .../countdown/countdown.rkt
+- You can also download the project and open it from there.
+
 ### Research
 --------------------
-Firstly, I set up issues on github. It was nothing pacific but my personal sort of
+Firstly, I set up issues on github. It was nothing specific but my personal sort of
 to do list of what i think the way of approaching it could be.
 I practiced racket by attempting the problem sheets that I received in college.
 Next, I watched countdown to clarify rules as I was not familiar to the process of countdown.
@@ -57,8 +70,7 @@ remove-duplicates is a built in function in racket which will reduce that number
 
 
 This is where **reverse polish notation** comes in.RPN is a mathematical notation in which every operator follows all of its operands so 
-doesnt matter which order. However to be a valid RPN equation you must for example have at least 2 numbers on the stack than the operator
-and the end of the stack has one number  
+doesnt matter which order. However to be a valid RPN equation you must for example have at least 2 numbers on the stack than the operator and the end of the stack has one operator  
 
 ### Issues
 Crashed when too many numbers due to memeory.
@@ -131,9 +143,15 @@ of the list to be valid RPN. I then appended the list.
  (define allPerms(remove-duplicates (permutations (append select4Ops numbers4))))
 ```
 
+### Conclusion
+This project was difficult to grasp but firstly, I did all the code we got in class and then adapted that code 
+with all of my own random generators but stuck with the same sort of algorithm given in class. So if I had to 
+repeat the same project. firstly, instead of jumping straight into the code I would have thought about how big the problem is for 
+example the 11! of the list of numbers and operators.
 
 
 ### References
+- https://docs.racket-lang.org/ - Racket Documentation
 - http://stackoverflow.com/questions/14674165/scheme-generate-random   -  Generate random num
 - http://www.cplusplus.com/forum/general/135491/ - permutations reverse polish notation
 - http://www-stone.ch.cam.ac.uk/documentation/rrf/rpn.html - Reverse Polish Notation
