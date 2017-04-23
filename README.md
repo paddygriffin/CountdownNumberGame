@@ -75,15 +75,19 @@ doesnt matter which order. However to be a valid RPN equation you must for examp
 ![RPN](https://github.com/paddygriffin/CountdownNumberGame/blob/master/image/RPN.jpg "Reverse Polish Notation example")
 
 ### Issues
-Crashed when too many numbers due to memeory.
-difficult to get my head around.
-Not fully working
+- Crashed when too many numbers due to memeory.
+- difficult to get my head around.
+- Not fully working
+- difficult to learn racket but the more I did it the more I liked it
 
 ### Algorithm 
 I used remove-duplicates built in function to remove repeated statements in order
 to make the problem smaller. And then working on making it a valid RPN.
 
-Map adds two numbers to start of all permutations and adds one operator to the end of permutations
+Map passes a list into a function
+```racket
+(map to-rpn allPerms)
+```
 
 Working on checking if a function is valid for RPN and need to apply the function to 
 every element of the list/stack and some equations are still not valid from my code. Also
@@ -147,10 +151,9 @@ of the list to be valid RPN. I then appended the list.
 ```
 
 ### Conclusion
-This project was difficult to grasp but firstly, I did all the code we got in class and then adapted that code 
-with all of my own random generators but stuck with the same sort of algorithm given in class. So if I had to 
-repeat the same project. firstly, instead of jumping straight into the code I would have thought about how big the problem is for 
-example the 11! of the list of numbers and operators.
+To conclude this project I was disappointed i didnt reach my end goal as I found myself mainly doing trial and error most of the
+time. If I were to restart the project I would focus a lot more on the algorithm and trying to get it to work. At the beginning of the 
+project I didn't fully take in the problem that was to be forseen for example the 11! of list of nums and operators. I mainly stook with the algorithm given in class and incorporated it with my random generators that I created a while ago
 
 
 ### References
