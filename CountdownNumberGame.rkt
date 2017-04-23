@@ -81,18 +81,78 @@ rand
 )
 (listNumbers2 start);Outputs second random list
 
+(define selectOp (list));Creates list for selecting 4 numbers
+(define (randomListOp r);Creates list for random numbers  
+  (define randomOp(list-ref r(random (length r))))  
+  (set! r(remove randomOp r)) 
+  (set! selectOp (cons randomOp selectOp))  
+  (if (= (length selectOp) 1)
+     selectOp ;Prints 2 random numbers
+      (randomListOp r))
+)
+(randomListOp op);Outputs second random list
 
+;Need a function for random operators same as above code except calling operators
+(define select4Ops (list));Creates list for selecting 4 operands
+(define (randomList r);Creates list  
+  (define randomOp(list-ref r(random (length r))))  
+  (set! r(remove randomOp r)) 
+  (set! select4Ops (cons randomOp select4Ops))  
+  (if (= (length select4Ops) 4)
+     select4Ops ;Prints 4 random operators
+      (randomList r))
+)
+(randomList op);Outputs second random list
+
+(define allPerms(remove-duplicates (permutations (append select4Ops numbers4))))
+
+;Apply function to every element of the list to get valid RPN
+;s= stack to see how many on it
+;e= list
+(define (valid-rpn? e (s 0)) ;default value is 0
+  (if (null? e)
+      (if (= s 1) #t #f)
+      (if (number? (car e) )
+          (valid-rpn? (cdr e) (+ s 1))
+      (if (> s 1)
+          (valid-rpn? (cdr e) (- s 1))
+          #f)))) ;true ot false
+
+(define resultsList null)
+
+
+
+; Reverse Polish Notation function, Sourced from https://rosettacode.org/wiki/Parsing/RPN_calculator_algorithm#Racket
+
+(define (calculate-RPN expr)
+  (for/fold ([stack '()]) ([token expr])
+    ;(printf "~a\t -> ~a~N" token stack) ; Uncomment to see workings, not recommended for long lists.
+    (match* (token stack)
+     [((? number? n) s) (cons n s)]
+     [('+ (list x y s ___)) (cons (+ x y) s)]
+     [('- (list x y s ___)) (cons (- y x) s)]
+     [('* (list x y s ___)) (cons (* x y) s)]
+     [('/ (list x y s ___)) (if (= y 0)
+                                (cons 0 s)
+                                (if (= x 0)
+                                    (cons 0 s)
+                                    (cons (/ x y) s)))]
+     [(x s) (error "calculate-RPN: Cannot calculate the expression:" 
+                   (reverse (cons x s)))])))
+
+;Function to append the numbers with operations
+(define (to-rpn l)
+  (cond [(valid-rpn? (append numbers2 l selectOp))
+   (calculate-RPN (append numbers2 l selectOp))]))
+
+(map to-rpn allPerms)
 #|
-
 ;This line creates all permutations and it removes the duplicates 
 (define perms (remove-duplicates (permutations start)))
-
 ;This function adds the two 1s to the front of the list and the -1 to the end of the list 
 (define (to-rpn l)
  (append (list 1 1) l (list -1)))
-
 (map to-rpn perms)
-
 ;Apply function to every element of the list to get valid RPN
 ;s= stack to see how many on it
 ;e= list
@@ -104,5 +164,4 @@ rand
       (if (< s 2)
           #f
           (#t))))) ;true ot false
-
 |#
