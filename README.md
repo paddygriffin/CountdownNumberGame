@@ -1,6 +1,17 @@
 # CountdownNumberGame
 A countdown number game for theory of algorithmns project using functional programming
 
+### Introduction
+--------------------
+In the Countdown Numbers game contestants are given six random numbers
+and a target number. The target number is a randomly generated three digit
+integer between 101 and 999 inclusive. The six random numbers are selected
+from the following list of numbers:
+[1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 25, 50, 75, 100]
+
+In this application I tried to generate the random number between the random and generate a
+list of random numbers and try and calculate it.
+
 ### Research
 --------------------
 Firstly, I set up issues on github. It was nothing pacific but my personal sort of
@@ -51,6 +62,7 @@ and the end of the stack has one number
 
 ### Issues
 Crashed when too many numbers due to memeory.
+difficult to get my head around.
 
 ### Algorithm 
 I used remove-duplicates built in function to remove repeated statements in order
@@ -71,11 +83,19 @@ Example:
 '((1 a) (1 b) (1 c) (2 a) (2 b) (2 c) (3 a) (3 b) (3 c))
 ```
 
-I dont need the cartesian-product at the moment so I found a calculate-rpn function online and tried
+I couldnt get the cartesian-product to work from code given in class.
+
+ so I found a calculate-rpn function online and tried
 to incorporate that into my program.(Link in code)
 
 So, I check if its a valid RPN and append the list and if it is I calculate-rpn however this is 
-still not working.
+still not working. 
+
+I ended up creating two different function one to get 4 rabdom numbers and the other two as
+RPN needs two numbers at the beginning of the list 
+
+I then created functions one to get 4 random operands and the other one operand for the end
+of the lidt to be valid RPN.
 
 
 
@@ -86,3 +106,5 @@ http://stackoverflow.com/questions/14674165/scheme-generate-random   -  Generate
 http://www.cplusplus.com/forum/general/135491/ - permutations reverse polish notation
 http://www-stone.ch.cam.ac.uk/documentation/rrf/rpn.html - Reverse Polish Notation
 http://www.alcula.com/calculators/rpn/ - Reverse Polish Notation Calculator
+https://rosettacode.org/wiki/Parsing/RPN_calculator_algorithm#Racket - Code calculator
+https://www.rosettacode.org/wiki/Pick_random_element - pick random element
