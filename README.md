@@ -72,6 +72,7 @@ remove-duplicates is a built in function in racket which will reduce that number
 
 This is where **reverse polish notation** comes in.RPN is a mathematical notation in which every operator follows all of its operands so 
 doesnt matter which order. However to be a valid RPN equation you must for example have at least 2 numbers on the stack than the operator and the end of the stack has one operator  
+![RPN](https://github.com/paddygriffin/CountdownNumberGame/blob/master/image/RPN.jpg "Reverse Polish Notation example")
 
 ### Issues
 Crashed when too many numbers due to memeory.
